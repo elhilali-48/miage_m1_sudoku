@@ -1,9 +1,12 @@
-#Sat Jun 10 15:27:16 CEST 2023
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\main\\java\\package-info.java=1679267276811
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\main\\java\\HorsBornesException.java=1685901499175
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\main\\java\\ValeurImpossibleException.java=1685896967599
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\test\\java\\package-info.java=1679267276811
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\main\\java\\CaractereInterditException.java=1685896940359
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\main\\java\\ValeurInitialeModificationException.java=1685901588368
-C\:\\Users\\bouho\\Desktop\\Soduko\ Project\\miage_m1_sudoku\\src\\test\\java\\TestSoduku.java=1685902144050
-configuration*?=4C570476120829130DDFD850E0D8F3883C524339
+#Sat Jun 10 16:19:22 CEST 2023
+configuration*?=E88F685C7E6616F40CD028FB23F3DDD313E7DC91
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\HorsBornesException.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\CaractereInterditException.java=1686406686893
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\test\\java\\TestSoduku.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\Grille.java=1686406686898
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\ElementDeGrille.java=1686406686893
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\ValeurImpossibleException.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\Solveur.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\package-info.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\main\\java\\ValeurInitialeModificationException.java=1686406686900
+C\:\\Users\\utilisateur\\Desktop\\ISI_logiciel\\miage_m1_sudoku\\src\\test\\java\\package-info.java=1686406686900

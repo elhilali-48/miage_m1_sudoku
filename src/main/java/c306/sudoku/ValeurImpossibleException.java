@@ -1,3 +1,4 @@
+package c306.sudoku;
 /**
  * Sudoko.
  * Quand une valeur dans la grille qui ne respecte pas les règles.

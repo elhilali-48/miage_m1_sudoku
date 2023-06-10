@@ -1,3 +1,4 @@
+package c306.sudoku;
 /**
  * Sudoko.
  * Quand on modifie une valeur initiale de la grille.

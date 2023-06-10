@@ -1,3 +1,4 @@
+package c306.sudoku;
 /**
  * Sudoko.
  * Exception levée lorsque les paramètres de positions sortent de la grille.

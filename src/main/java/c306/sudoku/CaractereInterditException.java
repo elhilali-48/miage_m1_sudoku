@@ -1,3 +1,4 @@
+package c306.sudoku;
 /**
  * Sudoko.
  * Quand une valeur qui ne fait pas partie du jeu de valeurs.
