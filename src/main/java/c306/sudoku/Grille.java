@@ -35,7 +35,7 @@ public interface Grille {
      * @throws ValeurInitialeModificationException si une valeur initiale de la grille est en position x,y
      */
     void setValue(int x, int y, ElementDeGrille value)
-            throws HorsBornesException, ValeurImpossibleException, ElementInterditException, ValeurInitialeModificationException;
+            throws HorsBornesException, ValeurImpossibleException, CaractereInterditException, ValeurInitialeModificationException;
 
     /**
      * Renvoie une valeur de la grille.
@@ -65,7 +65,7 @@ public interface Grille {
      * @throws ElementInterditException si value n'est pas un caractere pouvant être mis dans la grille
      */
     boolean isPossible(int x, int y, ElementDeGrille value)
-            throws HorsBornesException, ElementInterditException;
+            throws HorsBornesException, CaractereInterditException;
 
     /**
      * @param x     position x dans la grille

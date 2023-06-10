@@ -4,4 +4,5 @@
  * @author Groupe Q
  */
 public class TestSoduku {
+
 }
