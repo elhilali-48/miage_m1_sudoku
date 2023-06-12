@@ -7,7 +7,7 @@ public class ValeurImpossibleException extends Exception {
     /**
      * Constructeur pour ValeurImpossibleException.
      */
-    public ValeurImpossibleException() {
-        super("La valeur spécifiée ne respecte pas les règles du Sudoku.");
+    public ValeurImpossibleException(String element) {
+        super("La valeur" + element + " spécifiée ne respecte pas les règles du Sudoku.");
     }
 }

@@ -49,7 +49,7 @@ public class GrilleParser {
             }
             final int dimension = line.length() - 1;
             final char vide = line.charAt(0);
-            Map<Character, ElementDeGrille> elementDeGrilleMap = new HashMap<Character, ElementDeGrille>();
+            Map<Character, ElementDeGrille> elementDeGrilleMap = new HashMap<>();
             for (int i = 1; i < line.length(); i++) {
                 char value = line.charAt(i);
                 if (value == vide) {

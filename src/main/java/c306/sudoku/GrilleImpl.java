@@ -6,23 +6,16 @@ import java.util.Set;
 public class GrilleImpl implements Grille {
     
     private int dim; // Dimension de la grille
-    private ElementDeGrille[] grille; // Grille du jeu
+    private ElementDeGrille[][] grille; // Grille du jeu
 
     //public GrilleImpl(int dim) {
     //    this.dim = dim;
     //    this.grille = new ElementDeGrille[dim][dim]; //La création de la grille
     //}
 
-    public GrilleImpl(ElementDeGrille[] grille) {
-        this.dim = (int) Math.sqrt(grille.length);
-
-         for (int i = 0; i < grille.length; i++) {
-            int row = i / dim;
-            int col = i % dim;
-            this.grille[row][col] = grille[i];
-        }
-
-        this.grille = grille;
+    public GrilleImpl(ElementDeGrille[]  grille) {
+        this.dim = grille.length;
+        //this.grille = grille;
     }
 
     @Override
@@ -47,7 +40,7 @@ public class GrilleImpl implements Grille {
     public void setValue(int a, int b, ElementDeGrille valeur)
             throws ValeurImpossibleException, HorsBornesException, CaractereInterditException, ValeurInitialeModificationException {
         if (!isPossible(a, b, valeur)) {
-            throw new ValeurImpossibleException();
+            throw new ValeurImpossibleException(String.valueOf(valeur));
         }
 
         if (a < 0 || a >= dim || b < 0 || b >= dim) {
