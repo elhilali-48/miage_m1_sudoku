@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="6.18">
-<file name="C:\Users\utilisateur\Desktop\ISI_logiciel\miage_m1_sudoku\src\main\java\GrilleParser.java">
-<error line="52" severity="error" message="La ligne excède 80 caractères." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
-</file>
-</checkstyle>

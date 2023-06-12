@@ -4,12 +4,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GrilleImpl implements Grille {
-    private int dimension;
-    private ElementDeGrille[][] grille;
+    
+    private int dim; // Dimension de la grille
+    private ElementDeGrille[] grille; // Grille du jeu
 
-    public GrilleImpl(int dimension) {
-        this.dimension = dimension;
-        this.grille = new ElementDeGrille[dimension][dimension];
+    //public GrilleImpl(int dim) {
+    //    this.dim = dim;
+    //    this.grille = new ElementDeGrille[dim][dim]; //La création de la grille
+    //}
+
+    public GrilleImpl(ElementDeGrille[] grille) {
+        this.dim = (int) Math.sqrt(grille.length);
+
+         for (int i = 0; i < grille.length; i++) {
+            int row = i / dim;
+            int col = i % dim;
+            this.grille[row][col] = grille[i];
+        }
+
+        this.grille = grille;
     }
 
     @Override
@@ -27,37 +40,37 @@ public class GrilleImpl implements Grille {
 
     @Override
     public int getDimension() {
-        return dimension;
+        return dim;
     }
 
     @Override
-    public void setValue(int x, int y, ElementDeGrille value)
-            throws HorsBornesException, ValeurImpossibleException, CaractereInterditException, ValeurInitialeModificationException {
-        if (x < 0 || x >= dimension || y < 0 || y >= dimension) {
-            throw new HorsBornesException();
-        }
-        
-        if (isValeurInitiale(x, y)) {
-            throw new ValeurInitialeModificationException();
-        }
-        
-        if (!isPossible(x, y, value)) {
+    public void setValue(int a, int b, ElementDeGrille valeur)
+            throws ValeurImpossibleException, HorsBornesException, CaractereInterditException, ValeurInitialeModificationException {
+        if (!isPossible(a, b, valeur)) {
             throw new ValeurImpossibleException();
         }
 
-        if (!isPossible(x, y, value)) {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
+            throw new HorsBornesException();
+        }
+
+        if (!isPossible(a, b, valeur)) {
             throw new CaractereInterditException();
         }
+
+        if (isValeurInitiale(a, b)) {
+            throw new ValeurInitialeModificationException();
+        }
         
-        grille[x][y] = value;
+        grille[a][b] = valeur;
     }
 
     @Override
-    public ElementDeGrille getValue(int x, int y) throws HorsBornesException {
-        if (x < 0 || x >= dimension || y < 0 || y >= dimension) {
+    public ElementDeGrille getValue(int a, int b) throws HorsBornesException {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
             throw new HorsBornesException();
         }
-        return grille[x][y];
+        return grille[a][b];
     }
 
     @Override
@@ -73,17 +86,17 @@ public class GrilleImpl implements Grille {
     }
 
     @Override
-    public boolean isPossible(int x, int y, ElementDeGrille value)
+    public boolean isPossible(int a, int b, ElementDeGrille valeur)
             throws HorsBornesException, CaractereInterditException {
-        if (x < 0 || x >= dimension || y < 0 || y >= dimension) {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
             throw new HorsBornesException();
         }
         
-        if (value == null) {
+        if (valeur == null) {
             return true;
         }
         
-        if (!getElements().contains(value)) {
+        if (!getElements().contains(valeur)) {
             throw new CaractereInterditException();
         }
         
@@ -91,7 +104,7 @@ public class GrilleImpl implements Grille {
     }
 
     @Override
-    public boolean isValeurInitiale(int x, int y) {
+    public boolean isValeurInitiale(int a, int b) {
         return false;
     }
 }
