@@ -1,21 +1,26 @@
 package c306.sudoku;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class GrilleImpl implements Grille {
     
-    private int dim; // Dimension de la grille
-    private ElementDeGrille[][] grille; // Grille du jeu
+    private int dimension;
+    private ElementDeGrille[][] grille;
+    Set<ElementDeGrille> elementSet;
 
     //public GrilleImpl(int dim) {
     //    this.dim = dim;
     //    this.grille = new ElementDeGrille[dim][dim]; //La création de la grille
     //}
 
-    public GrilleImpl(ElementDeGrille[]  grille) {
-        this.dim = grille.length;
-        //this.grille = grille;
+    public GrilleImpl(ElementDeGrille[]  elem) {
+        this.dimension = elem.length;
+        this.grille = new ElementDeGrille[dimension][dimension];
+        elementSet = new HashSet<ElementDeGrille>(Arrays.asList(elem));
+        elementSet.add(null);
     }
 
     @Override
@@ -33,7 +38,7 @@ public class GrilleImpl implements Grille {
 
     @Override
     public int getDimension() {
-        return dim;
+        return dimension;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class GrilleImpl implements Grille {
             throw new ValeurImpossibleException(String.valueOf(valeur));
         }
 
-        if (a < 0 || a >= dim || b < 0 || b >= dim) {
+        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
             throw new HorsBornesException();
         }
 
@@ -60,7 +65,7 @@ public class GrilleImpl implements Grille {
 
     @Override
     public ElementDeGrille getValue(int a, int b) throws HorsBornesException {
-        if (a < 0 || a >= dim || b < 0 || b >= dim) {
+        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
             throw new HorsBornesException();
         }
         return grille[a][b];
@@ -81,7 +86,7 @@ public class GrilleImpl implements Grille {
     @Override
     public boolean isPossible(int a, int b, ElementDeGrille valeur)
             throws HorsBornesException, CaractereInterditException {
-        if (a < 0 || a >= dim || b < 0 || b >= dim) {
+        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
             throw new HorsBornesException();
         }
         

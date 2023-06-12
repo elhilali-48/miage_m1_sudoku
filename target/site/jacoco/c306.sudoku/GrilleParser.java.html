@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GrilleParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Activite2</a> &gt; <a href="index.source.html" class="el_package">c306.sudoku</a> &gt; <span class="el_source">GrilleParser.java</span></div><h1>GrilleParser.java</h1><pre class="source lang-java linenums">package c306.sudoku;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Méthodes utilitaire permettant de créer une Grille à partir d'un fichier texte.
+ * Il est attendu que la première ligne contiennet : le symbole de case vide, suivi des symboles possibles dans la grille (en UTF-8).
+ * Les autres lignes contiennent le contenu de la grille.
+ * &lt;p&gt;
+ * Exemple:
+ * -1234
+ * 2---
+ * 1--3
+ * 3--4
+ * -1-2
+ *
+ * @author Sébastien Choplin &lt;sebastien.choplin@u-picardie.fr&gt;
+ */
+public class GrilleParser {
+    private static final char EMPTY = '-';
+
+    /**
+     * constructeur.
+     */
+    private GrilleParser() {
+    }
+
+    /**
+     * Fonction parse.
+     *
+     * @param in recu
+     * @throws IOException               format de grille en caractere incorrect
+     * @throws ValeurImpossibleException si la grille ne respècte pas les règles
+     */
+    public static Grille parse(final InputStream in)
+            throws IOException, CaractereInterditException, ValeurInitialeModificationException, HorsBornesException, ValeurImpossibleException {
+<span class="nc" id="L43">        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {</span>
+
+
+<span class="nc" id="L46">            String line = reader.readLine();</span>
+<span class="nc bnc" id="L47" title="All 4 branches missed.">            if (line == null || line.length() == 0) {</span>
+<span class="nc" id="L48">                throw new IllegalArgumentException(&quot;pas de première ligne ?&quot;);</span>
+            }
+<span class="nc" id="L50">            final int dimension = line.length() - 1;</span>
+<span class="nc" id="L51">            final char vide = line.charAt(0);</span>
+<span class="nc" id="L52">            Map&lt;Character, ElementDeGrille&gt; elementDeGrilleMap = new HashMap&lt;&gt;();</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">            for (int i = 1; i &lt; line.length(); i++) {</span>
+<span class="nc" id="L54">                char value = line.charAt(i);</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">                if (value == vide) {</span>
+<span class="nc" id="L56">                    continue;</span>
+                }
+<span class="nc bnc" id="L58" title="All 2 branches missed.">                if (elementDeGrilleMap.containsKey(value)) {</span>
+<span class="nc" id="L59">                    throw new IllegalArgumentException(&quot;valeur possible dupliquée : &quot; + value);</span>
+                }
+<span class="nc" id="L61">                elementDeGrilleMap.put(value, new ElementDeGrilleImplAsChar(value));</span>
+            }
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">            if (elementDeGrilleMap.size() != dimension) {</span>
+<span class="nc" id="L65">                throw new IllegalArgumentException(&quot;pas le bon nombre de valeurs possibles&quot;);</span>
+            }
+<span class="nc" id="L67">            ElementDeGrille[] elementDeGrilles = elementDeGrilleMap.values().toArray(new ElementDeGrille[]{});</span>
+<span class="nc" id="L68">            Grille grille = new GrilleImpl(elementDeGrilles);</span>
+
+<span class="nc bnc" id="L70" title="All 2 branches missed.">            for (int i = 0; i &lt; dimension; i++) {</span>
+<span class="nc" id="L71">                line = reader.readLine();</span>
+<span class="nc bnc" id="L72" title="All 4 branches missed.">                if (line == null || line.length() != dimension) {</span>
+<span class="nc" id="L73">                    throw new IOException(&quot;pas le bon nombre sur la ligne : &quot; + line);</span>
+                }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                for (int j = 0; j &lt; dimension; j++) {</span>
+<span class="nc" id="L76">                    char c = line.charAt(j);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                    if (c != vide) {</span>
+<span class="nc" id="L78">                        ElementDeGrille elementDeGrille = elementDeGrilleMap.get(c);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                        if (elementDeGrille == null) {</span>
+<span class="nc" id="L80">                            throw new ValeurImpossibleException(String.valueOf(c));</span>
+                        }
+<span class="nc" id="L82">                        grille.setValue(i, j, elementDeGrille);</span>
+                    }
+                }
+            }
+
+
+<span class="nc" id="L88">            return grille;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

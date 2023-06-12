@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GrilleImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Activite2</a> &gt; <a href="index.source.html" class="el_package">c306.sudoku</a> &gt; <span class="el_source">GrilleImpl.java</span></div><h1>GrilleImpl.java</h1><pre class="source lang-java linenums">package c306.sudoku;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class GrilleImpl implements Grille {
+    
+    private int dimension;
+    private ElementDeGrille[][] grille;
+    Set&lt;ElementDeGrille&gt; elementSet;
+
+    //public GrilleImpl(int dim) {
+    //    this.dim = dim;
+    //    this.grille = new ElementDeGrille[dim][dim]; //La création de la grille
+    //}
+
+<span class="nc" id="L19">    public GrilleImpl(ElementDeGrille[]  elem) {</span>
+<span class="nc" id="L20">        this.dimension = elem.length;</span>
+<span class="nc" id="L21">        this.grille = new ElementDeGrille[dimension][dimension];</span>
+<span class="nc" id="L22">        elementSet = new HashSet&lt;ElementDeGrille&gt;(Arrays.asList(elem));</span>
+<span class="nc" id="L23">        elementSet.add(null);</span>
+<span class="nc" id="L24">    }</span>
+
+    @Override
+    public Set&lt;ElementDeGrille&gt; getElements() {
+<span class="nc" id="L28">        Set&lt;ElementDeGrille&gt; elements = new HashSet&lt;ElementDeGrille&gt;();</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        for (ElementDeGrille[] row : grille) {</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            for (ElementDeGrille element : row) {</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">                if (element != null) {</span>
+<span class="nc" id="L32">                    elements.add(element);</span>
+                }
+            }
+        }
+<span class="nc" id="L36">        return elements;</span>
+    }
+
+    @Override
+    public int getDimension() {
+<span class="nc" id="L41">        return dimension;</span>
+    }
+
+    @Override
+    public void setValue(int a, int b, ElementDeGrille valeur)
+            throws ValeurImpossibleException, HorsBornesException, CaractereInterditException, ValeurInitialeModificationException {
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (!isPossible(a, b, valeur)) {</span>
+<span class="nc" id="L48">            throw new ValeurImpossibleException(String.valueOf(valeur));</span>
+        }
+
+<span class="nc bnc" id="L51" title="All 8 branches missed.">        if (a &lt; 0 || a &gt;= dimension || b &lt; 0 || b &gt;= dimension) {</span>
+<span class="nc" id="L52">            throw new HorsBornesException();</span>
+        }
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        if (!isPossible(a, b, valeur)) {</span>
+<span class="nc" id="L56">            throw new CaractereInterditException();</span>
+        }
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (isValeurInitiale(a, b)) {</span>
+<span class="nc" id="L60">            throw new ValeurInitialeModificationException();</span>
+        }
+        
+<span class="nc" id="L63">        grille[a][b] = valeur;</span>
+<span class="nc" id="L64">    }</span>
+
+    @Override
+    public ElementDeGrille getValue(int a, int b) throws HorsBornesException {
+<span class="nc bnc" id="L68" title="All 8 branches missed.">        if (a &lt; 0 || a &gt;= dimension || b &lt; 0 || b &gt;= dimension) {</span>
+<span class="nc" id="L69">            throw new HorsBornesException();</span>
+        }
+<span class="nc" id="L71">        return grille[a][b];</span>
+    }
+
+    @Override
+    public boolean isComplete() {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        for (ElementDeGrille[] row : grille) {</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            for (ElementDeGrille element : row) {</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                if (element == null) {</span>
+<span class="nc" id="L79">                    return false;</span>
+                }
+            }
+        }
+<span class="nc" id="L83">        return true;</span>
+    }
+
+    @Override
+    public boolean isPossible(int a, int b, ElementDeGrille valeur)
+            throws HorsBornesException, CaractereInterditException {
+<span class="nc bnc" id="L89" title="All 8 branches missed.">        if (a &lt; 0 || a &gt;= dimension || b &lt; 0 || b &gt;= dimension) {</span>
+<span class="nc" id="L90">            throw new HorsBornesException();</span>
+        }
+        
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (valeur == null) {</span>
+<span class="nc" id="L94">            return true;</span>
+        }
+        
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (!getElements().contains(valeur)) {</span>
+<span class="nc" id="L98">            throw new CaractereInterditException();</span>
+        }
+        
+<span class="nc" id="L101">        return true;</span>
+    }
+
+    @Override
+    public boolean isValeurInitiale(int a, int b) {
+<span class="nc" id="L106">        return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
