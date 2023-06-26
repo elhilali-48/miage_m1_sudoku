@@ -4,18 +4,16 @@
  * Implémentation d'un élément de grille représenté par un caractère.
  */
 public class ElementDeGrilleImplAsChar implements ElementDeGrille {
-    private char value;
+    
+    private final char charactere;
 
-<span class="nc" id="L9">    public ElementDeGrilleImplAsChar(char value) {</span>
-<span class="nc" id="L10">        this.value = value;</span>
-<span class="nc" id="L11">    }</span>
+<span class="fc" id="L10">    public ElementDeGrilleImplAsChar(char value) {</span>
+<span class="fc" id="L11">        this.charactere = value;</span>
+<span class="fc" id="L12">    }</span>
 
     public char getValue() {
-<span class="nc" id="L14">        return value;</span>
+<span class="nc" id="L15">        return charactere;</span>
     }
 
-    public void setValue(char value) {
-<span class="nc" id="L18">        this.value = value;</span>
-<span class="nc" id="L19">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

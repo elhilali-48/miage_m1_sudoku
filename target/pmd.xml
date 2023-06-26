@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.53.0" timestamp="2023-06-12T15:34:01.686">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.53.0" timestamp="2023-06-26T12:33:41.633">
 <file name="C:\Users\bouho\Desktop\Suduko MIAGE\miage_m1_sudoku\src\main\java\c306\sudoku\GrilleImpl.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="24" rule="UnnecessaryImport" ruleset="Code Style" package="c306.sudoku" class="GrilleImpl" externalInfoUrl="https://pmd.github.io/pmd-6.53.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.Arrays'
+</violation>
 <violation beginline="5" endline="5" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="c306.sudoku" class="GrilleImpl" externalInfoUrl="https://pmd.github.io/pmd-6.53.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
 Unused import 'java.util.LinkedHashSet'
-</violation>
-</file>
-<file name="C:\Users\bouho\Desktop\Suduko MIAGE\miage_m1_sudoku\src\main\java\c306\sudoku\GrilleParser.java">
-<violation beginline="26" endline="26" begincolumn="31" endcolumn="35" rule="UnusedPrivateField" ruleset="Best Practices" package="c306.sudoku" class="GrilleParser" variable="EMPTY" externalInfoUrl="https://pmd.github.io/pmd-6.53.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
-Avoid unused private fields such as 'EMPTY'.
 </violation>
 </file>
 </pmd>

@@ -30,7 +30,7 @@ public interface Grille {
      * @param value élément de grille à mettre dans la case, null pour vider la case
      * @throws ValeurImpossibleException           si l'élément de grille n'est pas autorisé à cette position dans la grille
      *                                             aux vues des autres valeurs de la grille
-     * @throws ElementInterditException            si l'élément de grille n'est pas autorisé dans cette grille pouvant être mis dans la grille
+     * @throws CaractereInterditException            si l'élément de grille n'est pas autorisé dans cette grille pouvant être mis dans la grille
      * @throws HorsBornesException                 si x ou y sont en dehors de la grille
      * @throws ValeurInitialeModificationException si une valeur initiale de la grille est en position x,y
      */

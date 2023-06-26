@@ -4,17 +4,15 @@ package c306.sudoku;
  * Implémentation d'un élément de grille représenté par un caractère.
  */
 public class ElementDeGrilleImplAsChar implements ElementDeGrille {
-    private char value;
+    
+    private final char charactere;
 
     public ElementDeGrilleImplAsChar(char value) {
-        this.value = value;
+        this.charactere = value;
     }
 
     public char getValue() {
-        return value;
+        return charactere;
     }
 
-    public void setValue(char value) {
-        this.value = value;
-    }
 }

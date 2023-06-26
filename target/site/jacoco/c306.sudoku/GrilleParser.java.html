@@ -23,7 +23,6 @@ import java.util.Map;
  * @author Sébastien Choplin &lt;sebastien.choplin@u-picardie.fr&gt;
  */
 public class GrilleParser {
-    private static final char EMPTY = '-';
 
     /**
      * constructeur.
@@ -40,52 +39,52 @@ public class GrilleParser {
      */
     public static Grille parse(final InputStream in)
             throws IOException, CaractereInterditException, ValeurInitialeModificationException, HorsBornesException, ValeurImpossibleException {
-<span class="nc" id="L43">        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {</span>
+<span class="fc" id="L42">        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {</span>
 
 
-<span class="nc" id="L46">            String line = reader.readLine();</span>
-<span class="nc bnc" id="L47" title="All 4 branches missed.">            if (line == null || line.length() == 0) {</span>
-<span class="nc" id="L48">                throw new IllegalArgumentException(&quot;pas de première ligne ?&quot;);</span>
+<span class="fc" id="L45">            String line = reader.readLine();</span>
+<span class="pc bpc" id="L46" title="2 of 4 branches missed.">            if (line == null || line.length() == 0) {</span>
+<span class="nc" id="L47">                throw new IllegalArgumentException(&quot;pas de première ligne ?&quot;);</span>
             }
-<span class="nc" id="L50">            final int dimension = line.length() - 1;</span>
-<span class="nc" id="L51">            final char vide = line.charAt(0);</span>
-<span class="nc" id="L52">            Map&lt;Character, ElementDeGrille&gt; elementDeGrilleMap = new HashMap&lt;&gt;();</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            for (int i = 1; i &lt; line.length(); i++) {</span>
-<span class="nc" id="L54">                char value = line.charAt(i);</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">                if (value == vide) {</span>
-<span class="nc" id="L56">                    continue;</span>
+<span class="fc" id="L49">            final int dimension = line.length() - 1;</span>
+<span class="fc" id="L50">            final char vide = line.charAt(0);</span>
+<span class="fc" id="L51">            Map&lt;Character, ElementDeGrille&gt; elementDeGrilleMap = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            for (int i = 1; i &lt; line.length(); i++) {</span>
+<span class="fc" id="L53">                char value = line.charAt(i);</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">                if (value == vide) {</span>
+<span class="nc" id="L55">                    continue;</span>
                 }
-<span class="nc bnc" id="L58" title="All 2 branches missed.">                if (elementDeGrilleMap.containsKey(value)) {</span>
-<span class="nc" id="L59">                    throw new IllegalArgumentException(&quot;valeur possible dupliquée : &quot; + value);</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                if (elementDeGrilleMap.containsKey(value)) {</span>
+<span class="nc" id="L58">                    throw new IllegalArgumentException(&quot;valeur possible dupliquée : &quot; + value);</span>
                 }
-<span class="nc" id="L61">                elementDeGrilleMap.put(value, new ElementDeGrilleImplAsChar(value));</span>
+<span class="fc" id="L60">                elementDeGrilleMap.put(value, new ElementDeGrilleImplAsChar(value));</span>
             }
 
-<span class="nc bnc" id="L64" title="All 2 branches missed.">            if (elementDeGrilleMap.size() != dimension) {</span>
-<span class="nc" id="L65">                throw new IllegalArgumentException(&quot;pas le bon nombre de valeurs possibles&quot;);</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">            if (elementDeGrilleMap.size() != dimension) {</span>
+<span class="nc" id="L64">                throw new IllegalArgumentException(&quot;pas le bon nombre de valeurs possibles&quot;);</span>
             }
-<span class="nc" id="L67">            ElementDeGrille[] elementDeGrilles = elementDeGrilleMap.values().toArray(new ElementDeGrille[]{});</span>
-<span class="nc" id="L68">            Grille grille = new GrilleImpl(elementDeGrilles);</span>
+<span class="fc" id="L66">            ElementDeGrille[] elementDeGrilles = elementDeGrilleMap.values().toArray(new ElementDeGrille[]{});</span>
+<span class="fc" id="L67">            ElementDeGrille[][] grilleTab = new ElementDeGrille[dimension][dimension];</span>
 
-<span class="nc bnc" id="L70" title="All 2 branches missed.">            for (int i = 0; i &lt; dimension; i++) {</span>
-<span class="nc" id="L71">                line = reader.readLine();</span>
-<span class="nc bnc" id="L72" title="All 4 branches missed.">                if (line == null || line.length() != dimension) {</span>
+
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            for (int i = 0; i &lt; dimension; i++) {</span>
+<span class="fc" id="L71">                line = reader.readLine();</span>
+<span class="pc bpc" id="L72" title="2 of 4 branches missed.">                if (line == null || line.length() != dimension) {</span>
 <span class="nc" id="L73">                    throw new IOException(&quot;pas le bon nombre sur la ligne : &quot; + line);</span>
                 }
-<span class="nc bnc" id="L75" title="All 2 branches missed.">                for (int j = 0; j &lt; dimension; j++) {</span>
-<span class="nc" id="L76">                    char c = line.charAt(j);</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">                    if (c != vide) {</span>
-<span class="nc" id="L78">                        ElementDeGrille elementDeGrille = elementDeGrilleMap.get(c);</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">                        if (elementDeGrille == null) {</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                for (int j = 0; j &lt; dimension; j++) {</span>
+<span class="fc" id="L76">                    char c = line.charAt(j);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                    if (c != vide) {</span>
+<span class="fc" id="L78">                        ElementDeGrille elementDeGrille = elementDeGrilleMap.get(c);</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">                        if (elementDeGrille == null) {</span>
 <span class="nc" id="L80">                            throw new ValeurImpossibleException(String.valueOf(c));</span>
                         }
-<span class="nc" id="L82">                        grille.setValue(i, j, elementDeGrille);</span>
+<span class="fc" id="L82">                        grilleTab[i][j] = elementDeGrille;</span>
                     }
                 }
             }
 
-
-<span class="nc" id="L88">            return grille;</span>
+<span class="fc" id="L87">            return new GrilleImpl(elementDeGrilles, grilleTab);</span>
         }
     }
 

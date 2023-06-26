@@ -7,21 +7,32 @@ import java.util.Set;
 
 public class GrilleImpl implements Grille {
     
-    private int dimension;
+    private int dim;
     private ElementDeGrille[][] grille;
-    Set<ElementDeGrille> elementSet;
 
     //public GrilleImpl(int dim) {
     //    this.dim = dim;
     //    this.grille = new ElementDeGrille[dim][dim]; //La création de la grille
     //}
 
-    public GrilleImpl(ElementDeGrille[]  elem) {
-        this.dimension = elem.length;
-        this.grille = new ElementDeGrille[dimension][dimension];
+    /*public GrilleImpl(ElementDeGrille[] elem, ElementDeGrille[][] elem2) {
+        this.dim = elem.length;
+        this.grille = new ElementDeGrille[dim][dim];
         elementSet = new HashSet<ElementDeGrille>(Arrays.asList(elem));
         elementSet.add(null);
-    }
+    }*/
+
+    private Set<ElementDeGrille> elementSet;
+
+    public GrilleImpl(ElementDeGrille[] elementDeGrilles, ElementDeGrille[][] grilleTab) {
+        this.dim = grilleTab.length;
+        this.grille = new ElementDeGrille[dim][dim];
+        elementSet = new HashSet<ElementDeGrille>();
+        // 1
+        for(ElementDeGrille e : elementDeGrilles){
+            elementSet.add(e);
+        }
+}
 
     @Override
     public Set<ElementDeGrille> getElements() {
@@ -38,7 +49,7 @@ public class GrilleImpl implements Grille {
 
     @Override
     public int getDimension() {
-        return dimension;
+        return dim;
     }
 
     @Override
@@ -48,7 +59,7 @@ public class GrilleImpl implements Grille {
             throw new ValeurImpossibleException(String.valueOf(valeur));
         }
 
-        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
             throw new HorsBornesException();
         }
 
@@ -65,10 +76,11 @@ public class GrilleImpl implements Grille {
 
     @Override
     public ElementDeGrille getValue(int a, int b) throws HorsBornesException {
-        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
             throw new HorsBornesException();
+        }else{
+            return grille[a][b];
         }
-        return grille[a][b];
     }
 
     @Override
@@ -86,7 +98,7 @@ public class GrilleImpl implements Grille {
     @Override
     public boolean isPossible(int a, int b, ElementDeGrille valeur)
             throws HorsBornesException, CaractereInterditException {
-        if (a < 0 || a >= dimension || b < 0 || b >= dimension) {
+        if (a < 0 || a >= dim || b < 0 || b >= dim) {
             throw new HorsBornesException();
         }
         
@@ -103,6 +115,6 @@ public class GrilleImpl implements Grille {
 
     @Override
     public boolean isValeurInitiale(int a, int b) {
-        return false;
+        return grille[a][b] != null;
     }
 }
