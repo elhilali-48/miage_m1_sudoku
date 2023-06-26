@@ -26,7 +26,7 @@ under the License.
     <copyright>&#169;2023</copyright>
     <item>
       <title>File: 12,
-             Errors: 149,
+             Errors: 2,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.ElementDeGrille.java">c306/sudoku/ElementDeGrille.java</a>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.ValeurInitialeModificationException.java">c/sudoku/ValeurInitialeModificationException.java</a>
                 </td>
                 <td>
                   0
@@ -55,7 +55,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.Grille.java">c/sudoku/Grille.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -74,7 +88,77 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.HorsBornesException.java">c306/sudoku/HorsBornesException.java</a>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.ElementDeGrille.java">c/sudoku/ElementDeGrille.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.ValeurImpossibleException.java">c/sudoku/ValeurImpossibleException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.Solveur.java">c/sudoku/Solveur.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.GrilleParser.java">c/sudoku/GrilleParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.GrilleImpl.java">c/sudoku/GrilleImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.CaractereInterditException.java">c/sudoku/CaractereInterditException.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.GrilleImpl.java">c306/sudoku/GrilleImpl.java</a>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.ElementDeGrilleImplAsChar.java">c/sudoku/ElementDeGrilleImplAsChar.java</a>
                 </td>
                 <td>
                   0
@@ -97,12 +181,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  41
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.GrilleParser.java">c306/sudoku/GrilleParser.java</a>
+                  <a href="${project.url}/checkstyle.html#c.sudoku.HorsBornesException.java">c/sudoku/HorsBornesException.java</a>
                 </td>
                 <td>
                   0
@@ -111,91 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.CaractereInterditException.java">c306/sudoku/CaractereInterditException.java</a>
-                </td>
-                <td>
                   0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.Grille.java">c306/sudoku/Grille.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.Solveur.java">c306/sudoku/Solveur.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.ValeurInitialeModificationException.java">c306/sudoku/ValeurInitialeModificationException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.ValeurImpossibleException.java">c306/sudoku/ValeurImpossibleException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#c306.sudoku.ElementDeGrilleImplAsChar.java">c306/sudoku/ElementDeGrilleImplAsChar.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  7
                 </td>
               </tr>
                           <tr>
@@ -209,7 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  51
+                  1
                 </td>
               </tr>
                       </tbody>

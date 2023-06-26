@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GrilleImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Activite2</a> &gt; <a href="index.source.html" class="el_package">c.sudoku</a> &gt; <span class="el_source">GrilleImpl.java</span></div><h1>GrilleImpl.java</h1><pre class="source lang-java linenums">package c.sudoku;
+
+import java.util.HashSet;
+import java.util.Set;
+/**
+ * Grille.
+ */
+public class GrilleImpl implements Grille {
+    /**
+     * dim int.
+     */
+    private int dim;
+    /**
+     * private ElementGrille.
+     */
+    private ElementDeGrille[][] grille;
+    //public GrilleImpl(int dim) {
+    //    this.dim = dim;
+    //    this.grille = new ElementDeGrille[dim][dim];
+    //La création de la grille
+    //}
+
+    /*public GrilleImpl(ElementDeGrille[] elem, ElementDeGrille[][] elem2) {
+        this.dim = elem.length;
+        this.grille = new ElementDeGrille[dim][dim];
+        elementSet = new HashSet&lt;ElementDeGrille&gt;(Arrays.asList(elem));
+        elementSet.add(null);
+    }*/
+    /**
+     * elementSet set un element.
+     */
+    private Set&lt;ElementDeGrille&gt; elementSet;
+    /**
+     *
+     * @param elementDeGrilles elements de la grille
+     * @param grilleTab tableau de grille
+     */
+    public GrilleImpl(final ElementDeGrille[] elementDeGrilles,
+<span class="fc" id="L39">     final ElementDeGrille[][] grilleTab) {</span>
+<span class="fc" id="L40">        this.dim = grilleTab.length;</span>
+<span class="fc" id="L41">        this.grille = new ElementDeGrille[dim][dim];</span>
+<span class="fc" id="L42">        elementSet = new HashSet&lt;ElementDeGrille&gt;();</span>
+        // 1
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for (ElementDeGrille e : elementDeGrilles) {</span>
+<span class="fc" id="L45">            elementSet.add(e);</span>
+        }
+<span class="fc" id="L47">}</span>
+
+    @Override
+    public final Set&lt;ElementDeGrille&gt; getElements() {
+<span class="fc" id="L51">        Set&lt;ElementDeGrille&gt; elements = new HashSet&lt;ElementDeGrille&gt;();</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (ElementDeGrille[] row : grille) {</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            for (ElementDeGrille element : row) {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">                if (element != null) {</span>
+<span class="nc" id="L55">                    elements.add(element);</span>
+                }
+            }
+        }
+<span class="fc" id="L59">        return elements;</span>
+    }
+
+    @Override
+    public final int getDimension() {
+<span class="fc" id="L64">        return dim;</span>
+    }
+
+    @Override
+    public final void setValue(final int a, final int b,
+     final ElementDeGrille valeur)
+            throws ValeurImpossibleException, HorsBornesException,
+            CaractereInterditException, ValeurInitialeModificationException {
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (!isPossible(a, b, valeur)) {</span>
+<span class="nc" id="L73">            throw new ValeurImpossibleException(String.valueOf(valeur));</span>
+        }
+
+<span class="nc bnc" id="L76" title="All 8 branches missed.">        if (a &lt; 0 || a &gt;= dim || b &lt; 0 || b &gt;= dim) {</span>
+<span class="nc" id="L77">            throw new HorsBornesException();</span>
+        }
+
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (!isPossible(a, b, valeur)) {</span>
+<span class="nc" id="L81">            throw new CaractereInterditException();</span>
+        }
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (isValeurInitiale(a, b)) {</span>
+<span class="nc" id="L85">            throw new ValeurInitialeModificationException();</span>
+        }
+<span class="nc" id="L87">        grille[a][b] = valeur;</span>
+<span class="nc" id="L88">    }</span>
+
+    @Override
+    public final ElementDeGrille getValue(final int a, final int b)
+        throws HorsBornesException {
+<span class="pc bpc" id="L93" title="3 of 8 branches missed.">        if (a &lt; 0 || a &gt;= dim || b &lt; 0 || b &gt;= dim) {</span>
+<span class="fc" id="L94">            throw new HorsBornesException();</span>
+        } else {
+<span class="fc" id="L96">            return grille[a][b];</span>
+        }
+    }
+
+    @Override
+    public final boolean isComplete() {
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        for (ElementDeGrille[] row : grille) {</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            for (ElementDeGrille element : row) {</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">                if (element == null) {</span>
+<span class="fc" id="L105">                    return false;</span>
+                }
+            }
+        }
+<span class="nc" id="L109">        return true;</span>
+    }
+
+    @Override
+    public final boolean isPossible(final int a, final int b,
+    final ElementDeGrille valeur)
+            throws HorsBornesException, CaractereInterditException {
+<span class="pc bpc" id="L116" title="3 of 8 branches missed.">        if (a &lt; 0 || a &gt;= dim || b &lt; 0 || b &gt;= dim) {</span>
+<span class="fc" id="L117">            throw new HorsBornesException();</span>
+        }
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (valeur == null) {</span>
+<span class="fc" id="L120">            return true;</span>
+        }
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        if (!getElements().contains(valeur)) {</span>
+<span class="fc" id="L123">            throw new CaractereInterditException();</span>
+        }
+<span class="nc" id="L125">        return true;</span>
+    }
+
+    @Override
+    public final boolean isValeurInitiale(final int a, final int b) {
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">        return grille[a][b] != null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
