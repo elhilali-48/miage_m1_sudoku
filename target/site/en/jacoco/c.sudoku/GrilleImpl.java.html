@@ -122,12 +122,32 @@ public class GrilleImpl implements Grille {
 <span class="pc bpc" id="L122" title="1 of 2 branches missed.">        if (!getElements().contains(valeur)) {</span>
 <span class="fc" id="L123">            throw new CaractereInterditException();</span>
         }
-<span class="nc" id="L125">        return true;</span>
+
+        //Ajouter le test de ligne et colonne
+<span class="nc" id="L127">        int tailleBloc = (int) Math.sqrt(dim);</span>
+<span class="nc" id="L128">        int blocX = (a / tailleBloc) * tailleBloc;</span>
+<span class="nc" id="L129">        int blocY = (b / tailleBloc) * tailleBloc;</span>
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        for (int i = blocX; i &lt; blocX + tailleBloc; i++) {</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">            for (int j = blocY; j &lt; blocY + tailleBloc; j++) {</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">                if (grille[i][j] == valeur) {</span>
+<span class="nc" id="L133">                    return false; // L'élément se trouve déjà dans le bloc.</span>
+                }
+            }
+        }
+
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        for (int i = 0; i &lt; dim; i++) {</span>
+<span class="nc bnc" id="L139" title="All 4 branches missed.">            if (grille[a][i] == valeur || grille[i][b] == valeur) {</span>
+<span class="nc" id="L140">                return false; // L'élément se trouve déjà dans la ligne ou dans la colonne.</span>
+            }
+        }
+
+<span class="nc" id="L144">         return true;</span>
     }
 
     @Override
     public final boolean isValeurInitiale(final int a, final int b) {
-<span class="pc bpc" id="L130" title="1 of 2 branches missed.">        return grille[a][b] != null;</span>
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">        return grille[a][b] != null;</span>
+        //riyedd
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

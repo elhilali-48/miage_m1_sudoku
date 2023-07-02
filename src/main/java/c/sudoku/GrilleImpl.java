@@ -122,11 +122,31 @@ public class GrilleImpl implements Grille {
         if (!getElements().contains(valeur)) {
             throw new CaractereInterditException();
         }
-        return true;
+
+        //Ajouter le test de ligne et colonne
+        int tailleBloc = (int) Math.sqrt(dim);
+        int blocX = (a / tailleBloc) * tailleBloc;
+        int blocY = (b / tailleBloc) * tailleBloc;
+        for (int i = blocX; i < blocX + tailleBloc; i++) {
+            for (int j = blocY; j < blocY + tailleBloc; j++) {
+                if (grille[i][j] == valeur) {
+                    return false; // L'élément se trouve déjà dans le bloc.
+                }
+            }
+        }
+
+        for (int i = 0; i < dim; i++) {
+            if (grille[a][i] == valeur || grille[i][b] == valeur) {
+                return false; // L'élément se trouve déjà dans la ligne ou dans la colonne.
+            }
+        }
+
+         return true;
     }
 
     @Override
     public final boolean isValeurInitiale(final int a, final int b) {
         return grille[a][b] != null;
+        //riyedd
     }
 }

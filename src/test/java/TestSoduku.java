@@ -71,6 +71,10 @@ public class TestSoduku {
     constante.
     */
     private static final int C5 = 5;
+    /**
+    constante.
+    */
+    private static final int C4 = 4;
 
     /**
      * Se lance avant chaque test.
@@ -167,6 +171,8 @@ public class TestSoduku {
 
         assertTrue(grilleExemple.
         isPossible(C1, C12, grilleExemple.getValue(C0, C5)));
+        assertTrue(grilleExemple.
+        isPossible(C1, C1, grilleExemple.getValue(C0, C4)));
 
         assertThrows(HorsBornesException.class, () -> {
             grilleExemple.setValue(C05, C1, grilleExemple.getValue(C0, C8));

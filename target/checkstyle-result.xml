@@ -3,7 +3,10 @@
 <file name="C:\Users\bouho\Desktop\Suduko MIAGE\miage_m1_sudoku\src\main\java\c\sudoku\CaractereInterditException.java">
 <error line="0" severity="error" message="Manquant fichier package-info.java." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 </file>
+<file name="C:\Users\bouho\Desktop\Suduko MIAGE\miage_m1_sudoku\src\main\java\c\sudoku\GrilleImpl.java">
+<error line="140" severity="error" message="La ligne excède 80 caractères." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
 <file name="C:\Users\bouho\Desktop\Suduko MIAGE\miage_m1_sudoku\src\test\java\TestSoduku.java">
-<error line="130" severity="error" message="La ligne excède 80 caractères." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="134" severity="error" message="La ligne excède 80 caractères." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
 </file>
 </checkstyle>
